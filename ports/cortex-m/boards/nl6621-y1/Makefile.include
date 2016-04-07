@@ -1,0 +1,17 @@
+TARGET          ?= nl6621
+
+LIBNAME         ?= opencm3_nl6621
+DEFS            ?= -DNL6621
+#DEFS            += -DSTD_CON=USART2
+DEFS            += -DMST_SIZE=0x400
+
+FP_FLAGS        ?= -msoft-float
+ARCH_FLAGS      ?= -mthumb -mcpu=cortex-m3 $(FP_FLAGS) -mfix-cortex-m3-ldrd
+
+# OOCD            ?= openocd
+# OOCD_INTERFACE  ?= stlink-v2-1
+# OOCD_BOARD      ?= st_nucleo_f103rb
+
+objs            += board_setup.o
+objs            += stubs.o nl6621_con.o
+# aobjs           += helloworld.o
